@@ -149,7 +149,8 @@ main {
 .hero {
   border-bottom: 1px solid var(--line);
   display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+  gap: clamp(22px, 4vw, 68px);
+  grid-template-columns: minmax(0, 1.3fr) minmax(340px, 0.7fr);
   min-height: 580px;
   padding: 76px clamp(22px, 6vw, 110px) 58px;
   position: relative;
@@ -271,62 +272,84 @@ main {
   box-shadow: 0 0 0 4px rgba(123, 130, 145, 0.13);
 }
 
-.hero-field-card {
-  align-self: end;
-  background: var(--ink);
-  box-shadow: 18px 18px 0 var(--acid);
-  color: var(--white);
-  margin: 0 14px 18px 45px;
-  min-height: 355px;
-  padding: 26px;
+.hero-visual {
+  align-self: center;
+  background: var(--paper);
+  border: 1px solid rgba(19, 44, 42, 0.34);
+  box-shadow: 16px 16px 0 var(--acid);
+  height: 420px;
+  justify-self: end;
+  margin: 0 14px 12px 0;
+  max-width: 380px;
+  overflow: hidden;
   position: relative;
-  transform: rotate(1deg);
+  transform: rotate(0.8deg);
+  width: 100%;
   z-index: 1;
 }
 
-.field-number {
-  color: var(--acid);
-  font-family: var(--font-mono), monospace;
-  font-size: 13px;
+.hero-visual::after {
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  content: "";
+  inset: 0;
+  pointer-events: none;
   position: absolute;
-  right: 22px;
-  top: 18px;
 }
 
-.field-grid {
-  border-left: 1px solid rgba(255, 255, 255, 0.24);
-  border-top: 1px solid rgba(255, 255, 255, 0.24);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 37px;
+.hero-visual img {
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 44%;
+  width: 100%;
 }
 
-.field-grid > div {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
-  border-right: 1px solid rgba(255, 255, 255, 0.24);
-  display: flex;
-  flex-direction: column;
-  min-height: 102px;
-  padding: 18px;
-}
-
-.field-grid b {
+.hero-visual-index {
+  background: rgba(19, 44, 42, 0.91);
   color: var(--acid);
   font-family: var(--font-mono), monospace;
-  font-size: 29px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  padding: 8px 10px 7px;
+  position: absolute;
+  right: 14px;
+  top: 14px;
 }
 
-.field-grid span {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 11px;
-  margin-top: auto;
+.hero-visual-caption {
+  backdrop-filter: blur(8px);
+  background: rgba(19, 44, 42, 0.92);
+  bottom: 0;
+  color: rgba(255, 255, 255, 0.78);
+  display: grid;
+  gap: 0;
+  grid-template-columns: 1fr 1fr;
+  left: 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
 }
 
-.hero-field-card > p {
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 12px;
-  line-height: 1.6;
-  margin: 20px 2px 0;
+.hero-visual-caption span {
+  align-items: baseline;
+  display: flex;
+  font-size: 10px;
+  gap: 7px;
+  justify-content: center;
+  letter-spacing: -0.02em;
+  padding: 13px 10px 14px;
+}
+
+.hero-visual-caption span + span {
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.hero-visual-caption b {
+  color: var(--acid);
+  font-family: var(--font-mono), monospace;
+  font-size: 18px;
+  letter-spacing: -0.05em;
 }
 
 .planner {
@@ -1577,12 +1600,14 @@ footer {
 
 @media (max-width: 1120px) {
   .hero {
-    grid-template-columns: minmax(0, 1.3fr) minmax(290px, 0.7fr);
+    gap: 28px;
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
     padding-inline: 46px;
   }
 
-  .hero-field-card {
-    margin-left: 25px;
+  .hero-visual {
+    height: 390px;
+    margin-right: 10px;
   }
 
   .planner,
@@ -1625,9 +1650,15 @@ footer {
     max-width: 690px;
   }
 
-  .hero-field-card {
-    margin: 55px 16% 5px 22%;
-    min-height: 315px;
+  .hero-visual {
+    height: 235px;
+    justify-self: stretch;
+    margin: 38px 7% 3px 19%;
+    max-width: none;
+  }
+
+  .hero-visual img {
+    object-position: center 43%;
   }
 
   .planner,
@@ -1765,20 +1796,26 @@ footer {
     font-size: 9px;
   }
 
-  .hero-field-card {
+  .hero-visual {
     box-shadow: 10px 10px 0 var(--acid);
-    margin: 43px 9px 5px 25px;
-    min-height: auto;
-    padding: 22px;
+    height: 205px;
+    margin: 32px 10px 4px 22px;
   }
 
-  .field-grid > div {
-    min-height: 86px;
-    padding: 13px;
+  .hero-visual-index {
+    font-size: 8px;
+    padding: 6px 8px;
+    right: 10px;
+    top: 10px;
   }
 
-  .field-grid b {
-    font-size: 24px;
+  .hero-visual-caption span {
+    font-size: 8px;
+    padding-block: 9px 10px;
+  }
+
+  .hero-visual-caption b {
+    font-size: 14px;
   }
 
   .planner {

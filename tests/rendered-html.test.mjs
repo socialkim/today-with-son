@@ -33,6 +33,7 @@ test("server-renders the finished family outing service", async () => {
   assert.match(html, /초4 맞춤 서울 나들이 레이더/);
   assert.match(html, /오늘의 모험/);
   assert.match(html, /실시간 연결 중/);
+  assert.match(html, /hero-father-son\.jpg/);
   assert.match(html, /og\.png/);
   assert.doesNotMatch(html, /Your site is taking shape|codex-preview|SkeletonPreview/);
 });
@@ -51,6 +52,7 @@ test("ships the curated product data and social card", async () => {
   assert.match(places, /국립중앙박물관·용산가족공원/);
   assert.match(layout, /generateMetadata/);
   await access(new URL("../public/og.png", import.meta.url));
+  await access(new URL("../public/hero-father-son.jpg", import.meta.url));
   assert.deepEqual(
     await readdir(new URL("../app/_sites-preview", import.meta.url)),
     [],

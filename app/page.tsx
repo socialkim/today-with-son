@@ -465,16 +465,22 @@ export default function Home() {
             <button onClick={loadCrowd} aria-label="혼잡도 새로고침">↻</button>
           </div>
         </div>
-        <div className="hero-field-card" aria-label="서비스 특징">
-          <span className="field-number">04</span>
-          <div className="field-grid">
-            <div><b>20</b><span>초4 추천 장소</span></div>
-            <div><b>5분</b><span>혼잡도 갱신</span></div>
-            <div><b>10초</b><span>결정 완료</span></div>
-            <div><b>0원</b><span>가입·로그인</span></div>
-          </div>
-          <p>“어디 갈까?”가 길어질수록 주말은 짧아지니까.</p>
-        </div>
+        <figure className="hero-visual" aria-label="아빠와 아들의 서울 나들이">
+          <img
+            src="/hero-father-son.jpg"
+            alt="서울 지도를 바라보는 배낭을 멘 아빠와 초등학생 아들"
+            width="800"
+            height="1000"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
+          <span className="hero-visual-index">SEOUL · 04</span>
+          <figcaption className="hero-visual-caption">
+            <span><b>20곳</b> 초4 추천</span>
+            <span><b>5분</b> 혼잡 갱신</span>
+          </figcaption>
+        </figure>
       </section>
 
       <section className="planner" id="recommend">
